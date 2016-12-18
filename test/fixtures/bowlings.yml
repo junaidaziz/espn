@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  overs: 1.5
+  maidens: 1
+  runs: 1
+  wickets: 1
+  economy: 1.5
+
+two:
+  name: MyString
+  overs: 1.5
+  maidens: 1
+  runs: 1
+  wickets: 1
+  economy: 1.5
