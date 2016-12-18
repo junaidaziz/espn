@@ -8,29 +8,63 @@ class Crawlar
   def initialize(site_url)
     @site_url = site_url
     @crawled_urls = []
+    @doc = Nokogiri::HTML(open(@site_url))
   end
   
   
-  def get_url_list
-    doc = Nokogiri::HTML(open(@site_url))
-    urls = self.set_url_array(Hash[doc.xpath('//a[@href]').map {|link| [link.text.strip, link["href"]]}])
+  def get_batting_card
+    scorecard = []
+    table = @doc.css("table.innings").first
+    rows = table.css('tr')
+    rows.each_with_index do |val, index|
+      if index.odd?
+        tds = val.css("td")
+        card = []
+        tds.each_with_index do |td_val, index|
+          if index > 0
+            card << td_val.text
+          end
+        end
+        scorecard << card
+      end
+    end
+    scorecard
+  end
+
+  def get_second_batting_card
+    scorecard = []
+    table = @doc.css("table.innings").last
+    rows = table.css('tr')
+    rows.each_with_index do |val, index|
+      if index.odd?
+        tds = val.css("td")
+        card = []
+        tds.each_with_index do |td_val, index|
+          if index > 0
+            card << td_val.text
+          end
+        end
+        scorecard << card
+      end
+    end
+    scorecard
   end
 
   def get_h1_list
-    doc = Nokogiri::HTML(open(@site_url))
-    h1_headings = doc.css("h1")
+    @doc = Nokogiri::HTML(open(@site_url))
+    h1_headings = @doc.css("h1")
     (h1_headings.count > 0) ? self.get_heading_content(h1_headings) : ""
   end
 
   def get_h2_list
-    doc = Nokogiri::HTML(open(@site_url))
-    h2_headings = doc.css("h2")
+    @doc = Nokogiri::HTML(open(@site_url))
+    h2_headings = @doc.css("h2")
     (h2_headings.count > 0) ? self.get_heading_content(h2_headings) : ""
   end
 
   def get_h3_list
-    doc = Nokogiri::HTML(open(@site_url))
-    h3_headings = doc.css("h3")
+    @doc = Nokogiri::HTML(open(@site_url))
+    h3_headings = @doc.css("h3")
     (h3_headings.count > 0) ? self.get_heading_content(h3_headings) : ""
   end
 

@@ -8,6 +8,7 @@ class CreateBattings < ActiveRecord::Migration
       t.integer :fours
       t.integer :sixes
       t.float :strik_rake
+      t.references :scorecard, index: true, foreign_key: true
 
       t.timestamps null: false
     end

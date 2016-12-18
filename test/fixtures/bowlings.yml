@@ -7,6 +7,7 @@ one:
   runs: 1
   wickets: 1
   economy: 1.5
+  scorecard_id: 
 
 two:
   name: MyString
@@ -15,3 +16,4 @@ two:
   runs: 1
   wickets: 1
   economy: 1.5
+  scorecard_id: 

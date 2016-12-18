@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218193833) do
+ActiveRecord::Schema.define(version: 20161218212432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20161218193833) do
     t.integer  "fours"
     t.integer  "sixes"
     t.float    "strik_rake"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "scorecard_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
+
+  add_index "battings", ["scorecard_id"], name: "index_battings_on_scorecard_id", using: :btree
 
   create_table "bowlings", force: :cascade do |t|
     t.string   "name"
@@ -35,21 +38,19 @@ ActiveRecord::Schema.define(version: 20161218193833) do
     t.integer  "runs"
     t.integer  "wickets"
     t.float    "economy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "scorecard_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
+
+  add_index "bowlings", ["scorecard_id"], name: "index_bowlings_on_scorecard_id", using: :btree
 
   create_table "scorecards", force: :cascade do |t|
     t.string   "url"
-    t.integer  "batting_id"
-    t.integer  "bowling_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "scorecards", ["batting_id"], name: "index_scorecards_on_batting_id", using: :btree
-  add_index "scorecards", ["bowling_id"], name: "index_scorecards_on_bowling_id", using: :btree
-
-  add_foreign_key "scorecards", "battings"
-  add_foreign_key "scorecards", "bowlings"
+  add_foreign_key "battings", "scorecards"
+  add_foreign_key "bowlings", "scorecards"
 end

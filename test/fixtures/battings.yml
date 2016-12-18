@@ -8,6 +8,7 @@ one:
   fours: 1
   sixes: 1
   strik_rake: 1.5
+  scorecard_id: 
 
 two:
   name: MyString
@@ -17,3 +18,4 @@ two:
   fours: 1
   sixes: 1
   strik_rake: 1.5
+  scorecard_id: 

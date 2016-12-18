@@ -18,7 +18,7 @@ class ScorecardsControllerTest < ActionController::TestCase
 
   test "should create scorecard" do
     assert_difference('Scorecard.count') do
-      post :create, scorecard: { batting_id: @scorecard.batting_id, bowling_id: @scorecard.bowling_id, url: @scorecard.url }
+      post :create, scorecard: { url: @scorecard.url }
     end
 
     assert_redirected_to scorecard_path(assigns(:scorecard))
@@ -35,7 +35,7 @@ class ScorecardsControllerTest < ActionController::TestCase
   end
 
   test "should update scorecard" do
-    patch :update, id: @scorecard, scorecard: { batting_id: @scorecard.batting_id, bowling_id: @scorecard.bowling_id, url: @scorecard.url }
+    patch :update, id: @scorecard, scorecard: { url: @scorecard.url }
     assert_redirected_to scorecard_path(assigns(:scorecard))
   end
 

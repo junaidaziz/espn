@@ -7,6 +7,7 @@ class CreateBowlings < ActiveRecord::Migration
       t.integer :runs
       t.integer :wickets
       t.float :economy
+      t.references :scorecard, index: true, foreign_key: true
 
       t.timestamps null: false
     end
