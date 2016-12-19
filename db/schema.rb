@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218212432) do
+ActiveRecord::Schema.define(version: 20161219075649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161218212432) do
     t.integer  "scorecard_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "batting_no"
   end
 
   add_index "battings", ["scorecard_id"], name: "index_battings_on_scorecard_id", using: :btree
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161218212432) do
     t.integer  "scorecard_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "bowling_no"
   end
 
   add_index "bowlings", ["scorecard_id"], name: "index_bowlings_on_scorecard_id", using: :btree

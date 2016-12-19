@@ -8,7 +8,7 @@
 	<table class="table table-condensed">
 	<thead> <tr> <th>Name</th> <th>status</th> <th>Runs</th> <th>Balls</th><th>fours</th><th>sixes</th><th>strik rate</th> </tr> </thead> 
 		<tbody>  
-			<% @scorecard.battings.each do |batting| %>
+			<% @scorecard.battings.first_inning.each do |batting| %>
 			<tr>
 				<th><%= batting.name %></th><td><%= batting.status %></td><td><%= batting.runs %></td><td><%= batting.balls %></td><td><%= batting.fours %></td><td><%= batting.sixes %></td><td><%= batting.strik_rake %></td>
 			</tr>
@@ -16,3 +16,44 @@
 		</tbody> 
 	</table> 
 </div>
+<h2>Bowling</h2>
+<div class="bs-example" data-example-id="condensed-table"> 
+	<table class="table table-condensed">
+	<thead> <tr> <th>Name</th> <th>overs</th> <th>Maidens</th><th>Runs</th><th>Wickets</th><th>Economy</th> </tr> </thead> 
+		<tbody>  
+			<% @scorecard.bowlings.first_inning.each do |bowling| %>
+			<tr>
+				<th><%= bowling.name %></th><td><%= bowling.overs %></td><td><%= bowling.maidens %></td><td><%= bowling.runs %></td><td><%= bowling.wickets %></td><td><%= bowling.economy %></td>
+			</tr>
+			<% end %>
+		</tbody> 
+	</table> 
+</div>
+
+<h2>Batting</h2>
+<div class="bs-example" data-example-id="condensed-table"> 
+	<table class="table table-condensed">
+	<thead> <tr> <th>Name</th> <th>status</th> <th>Runs</th> <th>Balls</th><th>fours</th><th>sixes</th><th>strik rate</th> </tr> </thead> 
+		<tbody>  
+			<% @scorecard.battings.second_inning.each do |batting| %>
+			<tr>
+				<th><%= batting.name %></th><td><%= batting.status %></td><td><%= batting.runs %></td><td><%= batting.balls %></td><td><%= batting.fours %></td><td><%= batting.sixes %></td><td><%= batting.strik_rake %></td>
+			</tr>
+			<% end %>
+		</tbody> 
+	</table> 
+</div>
+<h2>Bowling</h2>
+<div class="bs-example" data-example-id="condensed-table"> 
+	<table class="table table-condensed">
+	<thead> <tr> <th>Name</th> <th>overs</th> <th>Maidens</th><th>Runs</th><th>Wickets</th><th>Economy</th> </tr> </thead> 
+		<tbody>  
+			<% @scorecard.bowlings.second_inning.each do |bowling| %>
+			<tr>
+				<th><%= bowling.name %></th><td><%= bowling.overs %></td><td><%= bowling.maidens %></td><td><%= bowling.runs %></td><td><%= bowling.wickets %></td><td><%= bowling.economy %></td>
+			</tr>
+			<% end %>
+		</tbody> 
+	</table> 
+</div>
+

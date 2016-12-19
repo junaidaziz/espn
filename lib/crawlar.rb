@@ -50,6 +50,44 @@ class Crawlar
     scorecard
   end
 
+  def get_first_bowling
+    bowlars = []
+    table = @doc.css("table.bowling-table").first
+    rows = table.css('tr')
+    rows.each_with_index do |val, index|
+      if index.odd?
+        tds = val.css("td")
+        bowler = []
+        tds.each_with_index do |td_val, index|
+          if index > 0
+            bowler << td_val.text
+          end
+        end
+        bowlars << bowler
+      end
+    end
+    bowlars
+  end
+
+  def get_second_bowling
+    bowlars = []
+    table = @doc.css("table.bowling-table").last
+    rows = table.css('tr')
+    rows.each_with_index do |val, index|
+      if index.odd?
+        tds = val.css("td")
+        bowler = []
+        tds.each_with_index do |td_val, index|
+          if index > 0
+            bowler << td_val.text
+          end
+        end
+        bowlars << bowler
+      end
+    end
+    bowlars
+  end
+
   def get_h1_list
     @doc = Nokogiri::HTML(open(@site_url))
     h1_headings = @doc.css("h1")
